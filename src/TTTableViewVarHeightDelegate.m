@@ -29,10 +29,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
   id<TTTableViewDataSource> dataSource = (id<TTTableViewDataSource>)tableView.dataSource;
-  
-  id object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-  Class cls = [dataSource tableView:tableView cellClassForObject:object];
-  return [cls tableView:tableView rowHeightForObject:object];
+
+  id cell = [dataSource tableView:tableView cellForRowAtIndexPath:indexPath];
+  if( [cell isKindOfClass:[TTTableViewCell class]] ) {
+    return [(TTTableViewCell*)cell rowHeightWithTableView:tableView];
+  } else {
+    return tableView.rowHeight;
+  }
 }
 
 

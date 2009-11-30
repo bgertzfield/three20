@@ -105,7 +105,7 @@
     if (item.URL && [_controller shouldOpenURL:item.URL]) {
       TTOpenURL(item.URL);
     }
-
+/* TODO: CLEANUP
     if ([object isKindOfClass:[TTTableButton class]]) {
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if ([object isKindOfClass:[TTTableMoreButton class]]) {
@@ -117,7 +117,7 @@
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
       
       [_controller.model load:TTURLRequestCachePolicyDefault more:YES];
-    }
+    }*/
   }
 
   [_controller didSelectObject:object atIndexPath:indexPath];
