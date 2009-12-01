@@ -641,6 +641,22 @@
   return [UIColor whiteColor];
 }
 
+- (UIColor*)tableMessageColor {
+  return RGBCOLOR(79, 89, 105);
+}
+
+- (UIColor*)tableMessageHighlightedColor {
+  return [UIColor whiteColor];
+}
+
+- (UIColor*)tableMessageSubtitleColor {
+  return [UIColor blackColor];
+}
+
+- (UIColor*)tableMessageSubtitleHighlightedColor {
+  return [UIColor whiteColor];
+}
+
 - (UIColor*)tableCaptionColor {
   return RGBCOLOR(36, 112, 216);
 }
@@ -654,6 +670,14 @@
 }
 
 - (UIColor*)tableCaptionTitleHighlightedColor {
+  return [UIColor whiteColor];
+}
+
+- (UIColor*)tableTimestampColor {
+  return RGBCOLOR(36, 112, 216);
+}
+
+- (UIColor*)tableTimestampHighlightedColor {
   return [UIColor whiteColor];
 }
 
@@ -760,6 +784,10 @@
   return [UIFont systemFontOfSize:14];
 }
 
+- (UIFont*)tableMessageFont {
+  return [UIFont systemFontOfSize:14];
+}
+
 - (UIFont*)tableCaptionFont {
   return [UIFont boldSystemFontOfSize:13];
 }
@@ -768,16 +796,16 @@
   return [UIFont boldSystemFontOfSize:15];
 }
 
+- (UIFont*)tableTimestampFont {
+  return [UIFont systemFontOfSize:13];
+}
+
 - (UIFont*)tableFont {
   return [UIFont boldSystemFontOfSize:17];
 }
 
 - (UIFont*)tableSmallFont {
   return [UIFont boldSystemFontOfSize:15];
-}
-
-- (UIFont*)tableTimestampFont {
-  return [UIFont systemFontOfSize:13];
 }
 
 - (UIFont*)tableButtonFont {
@@ -848,6 +876,18 @@
   return UITextAlignmentLeft;
 }
 
+- (UILineBreakMode)tableMessageLineBreakMode {
+  return UILineBreakModeTailTruncation;
+}
+
+- (NSInteger)tableMessageNumberOfLines {
+  return 2;
+}
+
+- (UITextAlignment)tableMessageTextAlignment {
+  return UITextAlignmentLeft;
+}
+
 - (UILineBreakMode)tableCaptionLineBreakMode {
   return UILineBreakModeTailTruncation;
 }
@@ -878,6 +918,10 @@
 
 - (UITextAlignment)tableCaptionTitleTextAlignment {
   return UITextAlignmentLeft;
+}
+
+- (UITextAlignment)tableTimestampTextAlignment {
+  return UITextAlignmentRight;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
