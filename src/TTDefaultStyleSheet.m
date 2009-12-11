@@ -697,6 +697,14 @@
   return [UIColor whiteColor];
 }
 
+- (UIColor*)tableButtonColor {
+  return RGBCOLOR(87, 107, 149);
+}
+
+- (UIColor*)tableButtonHighlightedColor {
+  return [UIColor whiteColor];
+}
+
 - (UIColor*)tableHeaderTextColor {
   return nil;
 }
@@ -824,16 +832,16 @@
   return [UIFont boldSystemFontOfSize:17];
 }
 
+- (UIFont*)tableButtonFont {
+  return [UIFont boldSystemFontOfSize:13];
+}
+
 - (UIFont*)tableFont {
   return [UIFont boldSystemFontOfSize:17];
 }
 
 - (UIFont*)tableSmallFont {
   return [UIFont boldSystemFontOfSize:15];
-}
-
-- (UIFont*)tableButtonFont {
-  return [UIFont boldSystemFontOfSize:13];
 }
 
 - (UIFont*)tableHeaderPlainFont {
@@ -974,6 +982,18 @@
 
 - (UITextAlignment)tableLinkTextAlignment {
   return UITextAlignmentLeft;
+}
+
+- (UILineBreakMode)tableButtonLineBreakMode {
+  return UILineBreakModeTailTruncation;
+}
+
+- (NSInteger)tableButtonNumberOfLines {
+  return 1;
+}
+
+- (UITextAlignment)tableButtonTextAlignment {
+  return UITextAlignmentCenter;
 }
 
 - (CGFloat)tableHPadding {
