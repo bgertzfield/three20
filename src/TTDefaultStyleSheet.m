@@ -689,6 +689,14 @@
   return [UIColor whiteColor];
 }
 
+- (UIColor*)tableLinkColor {
+  return RGBCOLOR(87, 107, 149);
+}
+
+- (UIColor*)tableLinkHighlightedColor {
+  return [UIColor whiteColor];
+}
+
 - (UIColor*)tableHeaderTextColor {
   return nil;
 }
@@ -810,6 +818,10 @@
 
 - (UIFont*)tableSummaryFont {
   return [UIFont systemFontOfSize:17];
+}
+
+- (UIFont*)tableLinkFont {
+  return [UIFont boldSystemFontOfSize:17];
 }
 
 - (UIFont*)tableFont {
@@ -950,6 +962,18 @@
 
 - (CGFloat)tableSummaryMinimumFontSize {
   return 14;
+}
+
+- (UILineBreakMode)tableLinkLineBreakMode {
+  return UILineBreakModeTailTruncation;
+}
+
+- (NSInteger)tableLinkNumberOfLines {
+  return 1;
+}
+
+- (UITextAlignment)tableLinkTextAlignment {
+  return UITextAlignmentLeft;
 }
 
 - (CGFloat)tableHPadding {
