@@ -681,6 +681,14 @@
   return [UIColor whiteColor];
 }
 
+- (UIColor*)tableSummaryColor {
+  return RGBCOLOR(79, 89, 105);
+}
+
+- (UIColor*)tableSummaryHighlightedColor {
+  return [UIColor whiteColor];
+}
+
 - (UIColor*)tableHeaderTextColor {
   return nil;
 }
@@ -800,6 +808,10 @@
   return [UIFont systemFontOfSize:13];
 }
 
+- (UIFont*)tableSummaryFont {
+  return [UIFont systemFontOfSize:17];
+}
+
 - (UIFont*)tableFont {
   return [UIFont boldSystemFontOfSize:17];
 }
@@ -810,10 +822,6 @@
 
 - (UIFont*)tableButtonFont {
   return [UIFont boldSystemFontOfSize:13];
-}
-
-- (UIFont*)tableSummaryFont {
-  return [UIFont systemFontOfSize:17];
 }
 
 - (UIFont*)tableHeaderPlainFont {
@@ -922,6 +930,26 @@
 
 - (UITextAlignment)tableTimestampTextAlignment {
   return UITextAlignmentRight;
+}
+
+- (UILineBreakMode)tableSummaryLineBreakMode {
+  return UILineBreakModeTailTruncation;
+}
+
+- (NSInteger)tableSummaryNumberOfLines {
+  return 1;
+}
+
+- (UITextAlignment)tableSummaryTextAlignment {
+  return UITextAlignmentCenter;
+}
+
+- (BOOL)tableSummaryAdjustsFontSizeToFitWidth {
+  return NO;
+}
+
+- (CGFloat)tableSummaryMinimumFontSize {
+  return 14;
 }
 
 - (CGFloat)tableHPadding {
