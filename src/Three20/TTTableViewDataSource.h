@@ -18,12 +18,16 @@
 
 #import "Three20/TTModel.h"
 
+@class TTTableStyleSheet;
+
 @protocol TTTableViewDataSource <UITableViewDataSource, TTModel, UISearchDisplayDelegate>
 
 /**
  * Optional method to return a model object to delegate the TTModel protocol to.
  */
 @property(nonatomic,retain) id<TTModel> model;
+
+@property(nonatomic,retain) TTTableStyleSheet* styleSheet;
 
 /**
  *
@@ -129,6 +133,7 @@
 
 @interface TTTableViewDataSource : NSObject <TTTableViewDataSource> {
   id<TTModel> _model;
+  TTTableStyleSheet* _styleSheet;
 }
 
 @end
