@@ -470,13 +470,16 @@ static const CGFloat kMaxLabelHeight = 2000;
 
   UIEdgeInsets padding = self.styleSheet.padding;
 
+  CGFloat totalLabelHeight = titleHeight + subtitleHeight;
+  CGFloat centeredYOffset = floor((self.contentView.height - totalLabelHeight) / 2);
+
   self.textLabel.frame =
     CGRectMake(((isImageRightAligned || nil == _styledImageView) ? padding.left : imageWidth),
-               padding.top, contentWidth, titleHeight);
+               centeredYOffset, contentWidth, titleHeight);
 
   self.detailTextLabel.frame =
     CGRectMake(((isImageRightAligned || nil == _styledImageView) ? padding.left : imageWidth),
-               padding.top + titleHeight,
+               centeredYOffset + titleHeight,
                contentWidth, subtitleHeight);
 }
 
