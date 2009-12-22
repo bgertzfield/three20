@@ -276,7 +276,7 @@
 }
 
 - (UITextAlignment)captionTextAlignment {
-  return UITextAlignmentLeft;
+  return UITextAlignmentRight;
 }
 
 - (BOOL)captionAdjustsFontSizeToFitWidth {
