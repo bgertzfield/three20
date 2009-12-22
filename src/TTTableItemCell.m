@@ -305,6 +305,7 @@ static const CGFloat kMaxLabelHeight = 2000;
   [super layoutSubviews];
 
   UIEdgeInsets padding = self.styleSheet.padding;
+  const CGFloat paddedCellHeight = self.contentView.height - (padding.top + padding.bottom);
 
   CGSize imageSize;
   UIEdgeInsets imagePadding;
@@ -313,6 +314,7 @@ static const CGFloat kMaxLabelHeight = 2000;
                           imagePadding: &imagePadding];
   CGFloat imageWidth = imageSize.width + imagePadding.left + imagePadding.right;
 
+/*
   CGFloat titleHeight = [self.textLabel heightWithWidth:contentWidth];
 
   NSArray* labels = [[NSArray alloc] initWithObjects:
@@ -327,6 +329,7 @@ static const CGFloat kMaxLabelHeight = 2000;
   titleHeight = [[labelHeights objectAtIndex:0] floatValue];
 
   TT_RELEASE_SAFELY(labelHeights);
+*/
 
   BOOL isImageRightAligned = ((TTTableImageLinkedItem*)_item).imageRightAligned;
 
@@ -338,12 +341,13 @@ static const CGFloat kMaxLabelHeight = 2000;
     CGRectMake((isImageRightAligned
         ? (self.contentView.width - imagePadding.right - imageSize.width)
         : imagePadding.left),
-      imagePadding.top,
+      floor(self.contentView.height
+            - MIN(self.contentView.height, imageSize.height)) / 2,
       imageSize.width, imageSize.height);
 
   self.textLabel.frame =
     CGRectMake(((isImageRightAligned || nil == _styledImageView) ? padding.left : imageWidth),
-               padding.top, contentWidth, titleHeight);
+               padding.top, contentWidth, paddedCellHeight);
 }
 
 
