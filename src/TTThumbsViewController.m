@@ -100,16 +100,16 @@ static CGFloat kThumbSpacing = 4;
 - (id)tableView:(UITableView*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath {
   if (indexPath.row == [tableView numberOfRowsInSection:0]-1 && self.hasMoreToLoad) {
     NSString* text = TTLocalizedString(@"Load More Photos...", @"");
-    NSString* caption = nil;
+    NSString* subtitle = nil;
     if (_photoSource.numberOfPhotos == -1) {
-      caption = [NSString stringWithFormat:TTLocalizedString(@"Showing %@ Photos", @""),
+      subtitle = [NSString stringWithFormat:TTLocalizedString(@"Showing %@ Photos", @""),
                                            TTFormatInteger(_photoSource.maxPhotoIndex+1)];
     } else {
-      caption = [NSString stringWithFormat:TTLocalizedString(@"Showing %@ of %@ Photos", @""),
+      subtitle = [NSString stringWithFormat:TTLocalizedString(@"Showing %@ of %@ Photos", @""),
                                            TTFormatInteger(_photoSource.maxPhotoIndex+1),
                                            TTFormatInteger(_photoSource.numberOfPhotos)];
     }
-    return [[[TTTableMoreButtonItem item] applyCaption:caption] applyTitle:text];
+    return [[[TTTableMoreButtonItem item] applySubtitle:subtitle] applyTitle:text];
   } else {
     NSInteger columnCount = self.columnCount;
     return [_photoSource photoAtIndex:indexPath.row * columnCount];
