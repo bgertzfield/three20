@@ -265,7 +265,6 @@
 		EBA17A2010B4DDD500835016 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA17A1E10B4DDD500835016 /* NSDataAdditions.m */; };
 		EBA17A3810B4DF5E00835016 /* NSDataAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EBA17A3710B4DF5E00835016 /* NSDataAdditions.h */; };
 		EBAE96A610D1F3C700F497CA /* UILabelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAE96A510D1F3C700F497CA /* UILabelAdditions.m */; };
-		EBAE96B010D1F3D000F497CA /* UILabelAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EBAE96AF10D1F3D000F497CA /* UILabelAdditions.h */; };
 		EBBB349710B36CCE00AD5BCF /* TTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EBBB349610B36CCE00AD5BCF /* TTDebug.h */; };
 		EBC60EDF10D5AA9300D1997B /* TTTableStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC60EDD10D5AA9300D1997B /* TTTableStyleSheet.m */; };
 		EBC60EE110D5AAA400D1997B /* TTTableStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = EBC60EE010D5AAA400D1997B /* TTTableStyleSheet.h */; };
@@ -647,6 +646,29 @@
 				6E75E8D81122AB7900276F63 /* TTRequestLoader.m */,
 			);
 			name = Private;
+		6E14D8EA10E0B5F100445222 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6E14D92E10E0B6C000445222 /* XML */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		6E14D92E10E0B6C000445222 /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				6E14D99910E0BC8000445222 /* TTXMLParser.h */,
+				6E14D8EC10E0B60000445222 /* TTXMLParser.m */,
+			);
+			name = XML;
+			sourceTree = "<group>";
+		};
+		6E14D93910E0B99E00445222 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E14D95710E0B9CB00445222 /* three20issues.xml */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		6E8F79FC1110FECB00069B64 /* Patterns */ = {

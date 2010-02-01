@@ -272,7 +272,7 @@ static const CGFloat kMaxLabelHeight = 2000;
     if (nil != item.image || TTIsStringWithAnyText(item.imageURLPath)) {
       _styledImageView = [[TTImageView alloc] init];
       _styledImageView.defaultImage = item.image;
-      _styledImageView.URL          = item.imageURLPath;
+      _styledImageView.urlPath      = item.imageURLPath;
       _styledImageView.style        = item.imageStyle;
       [self.contentView addSubview:_styledImageView];
     }

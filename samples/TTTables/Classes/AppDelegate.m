@@ -43,7 +43,7 @@
   [map from:kCustomTableItemURLPath toViewController:[CustomTableItemController class]];
 
   if (![navigator restoreViewControllers]) {
-    [navigator openURL:kRootURLPath animated:NO];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kRootURLPath]];
   }
 }
 
@@ -56,7 +56,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-  [[TTNavigator navigator] openURL:URL.absoluteString animated:NO];
+  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
   return YES;
 }
 
