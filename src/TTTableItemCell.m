@@ -1606,7 +1606,7 @@ static const CGFloat kMaxLabelHeight = 2000;
 
   CGFloat contentWidth = self.contentView.width
     - self.styleSheet.padding.left - self.styleSheet.padding.right;
-  CGFloat textContentWidth = contentWidth - _item.control.width - kControlPadding - kControlPadding;
+  CGFloat textContentWidth = contentWidth;
 
   if (![TTTableControlItemCell shouldRespectControlPadding:_item.control]) {
     textContentWidth += kControlPadding;
