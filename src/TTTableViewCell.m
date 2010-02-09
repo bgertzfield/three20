@@ -25,6 +25,7 @@ const CGFloat kDisclosureIndicatorWidth     = 20;
 const CGFloat kDetailDisclosureButtonWidth  = 33;
 const CGFloat kEditingIndentationWidth      = 32;
 const CGFloat kReorderButtonWidth           = 31;
+const CGFloat kTableIndexWidth              = 32;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,6 +53,13 @@ const CGFloat kReorderButtonWidth           = 31;
                            indexPath: (NSIndexPath*)indexPath
                              padding: (UIEdgeInsets)padding {
   CGFloat width = tableView.width - padding.left - padding.right - [tableView tableCellMargin] * 2;
+
+  // Does the table show an index?
+  if ([tableView.dataSource respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
+    if (nil != [tableView.dataSource sectionIndexTitlesForTableView:tableView]) {
+      width -= kTableIndexWidth;
+    }
+  }
 
   // This logic is rather obtuse. Here's the flow.
   //
