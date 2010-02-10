@@ -22,6 +22,8 @@
 #import "Three20/TTGlobalStyle.h"
 #import "Three20/TTDefaultStyleSheet.h"
 
+#import "Three20/TTErrorView.h"
+
 #import "Three20/TTStyleSheet.h"
 #import "Three20/TTURLCache.h"
 #import "Three20/TTNavigator.h"
@@ -39,18 +41,30 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)backAction {
+  [_errorView removeFromSuperview];
+  TT_RELEASE_SAFELY(_errorView);
+  [_webView setHidden:NO];
+  
   [_webView goBack];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)forwardAction {
+  [_errorView removeFromSuperview];
+  TT_RELEASE_SAFELY(_errorView);
+  [_webView setHidden:NO];
+  
   [_webView goForward];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)refreshAction {
+  [_errorView removeFromSuperview];
+  TT_RELEASE_SAFELY(_errorView);
+  [_webView setHidden:NO];
+  
   [_webView reload];
 }
 
@@ -153,8 +167,8 @@
   _stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
     UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
   _stopButton.tag = 3;
-  UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-    UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
+  _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+    UIBarButtonSystemItemAction target:self action:@selector(shareAction)];
 
   UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
    UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
@@ -164,7 +178,7 @@
   _toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
   _toolbar.tintColor = TTSTYLEVAR(toolbarTintColor);
   _toolbar.items = [NSArray arrayWithObjects:
-    _backButton, space, _forwardButton, space, _refreshButton, space, actionButton, nil];
+    _backButton, space, _forwardButton, space, _refreshButton, space, _actionButton, nil];
   [self.view addSubview:_toolbar];
 }
 
@@ -180,6 +194,8 @@
   TT_RELEASE_SAFELY(_refreshButton);
   TT_RELEASE_SAFELY(_stopButton);
   TT_RELEASE_SAFELY(_activityItem);
+  TT_RELEASE_SAFELY(_actionButton);
+  TT_RELEASE_SAFELY(_errorView);
 }
 
 
@@ -273,6 +289,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidStartLoad:(UIWebView*)webView {
+  [_errorView removeFromSuperview];
+  TT_RELEASE_SAFELY(_errorView);
+  [_webView setHidden:NO];
+
   self.title = TTLocalizedString(@"Loading...", @"");
   if (!self.navigationItem.rightBarButtonItem) {
     [self.navigationItem setRightBarButtonItem:_activityItem animated:YES];
@@ -302,6 +322,16 @@
 - (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)error {
   TT_RELEASE_SAFELY(_loadingURL);
   [self webViewDidFinishLoad:webView];
+
+  _errorView = [[TTErrorView alloc] initWithTitle:TTDescriptionForError(error)
+                                         subtitle:nil
+                                            image:nil];
+  _errorView.frame = _webView.bounds;
+  _errorView.autoresizingMask = UIViewAutoresizingFlexibleWidth
+    | UIViewAutoresizingFlexibleHeight;
+  [self.view addSubview:_errorView];
+
+  [_webView setHidden:YES];
 }
 
 

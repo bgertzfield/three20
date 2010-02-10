@@ -17,6 +17,7 @@
 #import "Three20/TTModelViewController.h"
 
 @protocol TTWebControllerDelegate;
+@class TTErrorView;
 
 @interface TTWebController : TTModelViewController <UIWebViewDelegate, UIActionSheetDelegate> {
   UIWebView*        _webView;
@@ -30,8 +31,11 @@
   UIBarButtonItem*  _refreshButton;
   UIBarButtonItem*  _stopButton;
   UIBarButtonItem*  _activityItem;
+  UIBarButtonItem*  _actionButton;
 
   NSURL*            _loadingURL;
+
+  TTErrorView*      _errorView;
 
   id<TTWebControllerDelegate> _delegate;
 }
