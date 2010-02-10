@@ -28,7 +28,6 @@
 		6E75E85911229CA500276F63 /* TTUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E85811229CA500276F63 /* TTUserInfo.h */; };
 		6E75E8DA1122AB7900276F63 /* TTRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E75E8D81122AB7900276F63 /* TTRequestLoader.m */; };
 		6E75E8DC1122AB9000276F63 /* TTRequestLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E8DB1122AB9000276F63 /* TTRequestLoader.h */; };
-		6E8F7849110FD80C00069B64 /* TTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1F6C5D10B36C32003DAA1F /* TTDebug.m */; };
 		6E8F7930111023EE00069B64 /* TTURLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F792E111023EE00069B64 /* TTURLAction.m */; };
 		6E8F79341110262700069B64 /* TTURLAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F79331110262700069B64 /* TTURLAction.h */; };
 		6E8F79EF1110FE3D00069B64 /* TTURLNavigatorPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F79ED1110FE3D00069B64 /* TTURLNavigatorPattern.m */; };
@@ -669,6 +668,25 @@
 				6E14D95710E0B9CB00445222 /* three20issues.xml */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		6E75E7EA11229A4F00276F63 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				BEF31F6C0F352E64000DE5D2 /* TTURLRequest.h */,
+				BEF31F560F352E64000DE5D2 /* TTURLRequest.m */,
+				6E75E7EF11229A7F00276F63 /* TTURLRequestDelegate.h */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
+		6E75E8D61122AB6A00276F63 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				6E75E8DB1122AB9000276F63 /* TTRequestLoader.h */,
+				6E75E8D81122AB7900276F63 /* TTRequestLoader.m */,
+			);
+			name = Private;
 			sourceTree = "<group>";
 		};
 		6E8F79FC1110FECB00069B64 /* Patterns */ = {
@@ -1490,8 +1508,6 @@
 				6E8F7AAC111102AA00069B64 /* TTURLLiteral.m in Sources */,
 				6EB0117911118040004D204C /* TTImageLayer.m in Sources */,
 				6EB013891112C513004D204C /* TTImageViewInternal.m in Sources */,
-				6E14D7E810E09A2300445222 /* TTURLDataResponse.m in Sources */,
-				6E14D81410E0A12700445222 /* TTURLImageResponse.m in Sources */,
 				6E75E85711229C9100276F63 /* TTUserInfo.m in Sources */,
 				6E75E8DA1122AB7900276F63 /* TTRequestLoader.m in Sources */,
 				6E924A93112C770500531F03 /* TTTableViewVarHeightDelegate.m in Sources */,
