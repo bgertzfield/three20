@@ -23,6 +23,8 @@
 		6E35CCC210912BE10066B478 /* NSMutableDictionaryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E35CCC010912BE10066B478 /* NSMutableDictionaryAdditions.m */; };
 		6E35CCFD10912C870066B478 /* NSMutableDictionaryAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E35CCFB10912C870066B478 /* NSMutableDictionaryAdditions.h */; };
 		6E35CCFE10912C870066B478 /* NSMutableArrayAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E35CCFC10912C870066B478 /* NSMutableArrayAdditions.h */; };
+		6E460058112329460046BF27 /* TTNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E460056112329460046BF27 /* TTNetworkReachability.m */; };
+		6E46005A112329D70046BF27 /* TTNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E460059112329D70046BF27 /* TTNetworkReachability.h */; };
 		6E75E7F011229A7F00276F63 /* TTURLRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E7EF11229A7F00276F63 /* TTURLRequestDelegate.h */; };
 		6E75E85711229C9100276F63 /* TTUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E75E85511229C9100276F63 /* TTUserInfo.m */; };
 		6E75E85911229CA500276F63 /* TTUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E85811229CA500276F63 /* TTUserInfo.h */; };
@@ -290,6 +292,8 @@
 		6E35CCC010912BE10066B478 /* NSMutableDictionaryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableDictionaryAdditions.m; sourceTree = "<group>"; };
 		6E35CCFB10912C870066B478 /* NSMutableDictionaryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSMutableDictionaryAdditions.h; path = Three20/NSMutableDictionaryAdditions.h; sourceTree = "<group>"; };
 		6E35CCFC10912C870066B478 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSMutableArrayAdditions.h; path = Three20/NSMutableArrayAdditions.h; sourceTree = "<group>"; };
+		6E460056112329460046BF27 /* TTNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTNetworkReachability.m; sourceTree = "<group>"; };
+		6E460059112329D70046BF27 /* TTNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNetworkReachability.h; path = Three20/TTNetworkReachability.h; sourceTree = "<group>"; };
 		6E75E7EF11229A7F00276F63 /* TTURLRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTURLRequestDelegate.h; path = Three20/TTURLRequestDelegate.h; sourceTree = "<group>"; };
 		6E75E85511229C9100276F63 /* TTUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTUserInfo.m; sourceTree = "<group>"; };
 		6E75E85811229CA500276F63 /* TTUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTUserInfo.h; path = Three20/TTUserInfo.h; sourceTree = "<group>"; };
@@ -922,7 +926,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		BEF321B00F353B15000DE5D2 /* Network */ = {
+		BEF321B00F353B15000DE5D2 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
 				6E75E8D61122AB6A00276F63 /* Private */,
@@ -935,7 +939,7 @@
 				BEF31F6A0F352E64000DE5D2 /* TTURLCache.h */,
 				BEF31F540F352E64000DE5D2 /* TTURLCache.m */,
 			);
-			name = Network;
+			name = Requests;
 			sourceTree = "<group>";
 		};
 		BEF321B10F353B25000DE5D2 /* Global */ = {
@@ -1169,7 +1173,9 @@
 			isa = PBXGroup;
 			children = (
 				BEF44D4F10182FD800E9EC07 /* Models */,
-				BEF321B00F353B15000DE5D2 /* Network */,
+				BEF321B00F353B15000DE5D2 /* Requests */,
+				6E460059112329D70046BF27 /* TTNetworkReachability.h */,
+				6E460056112329460046BF27 /* TTNetworkReachability.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -1316,6 +1322,7 @@
 				6E14DAD810E0DC7D00445222 /* TTURLXMLResponse.h in Headers */,
 				EBDC847A10C44AD400257247 /* UILabelAdditions.h in Headers */,
 				EBC60EE110D5AAA400D1997B /* TTTableStyleSheet.h in Headers */,
+				6E46005A112329D70046BF27 /* TTNetworkReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1520,6 +1527,7 @@
 				6E14D8EE10E0B60000445222 /* TTXMLParser.m in Sources */,
 				EBAE96A610D1F3C700F497CA /* UILabelAdditions.m in Sources */,
 				EBC60EDF10D5AA9300D1997B /* TTTableStyleSheet.m in Sources */,
+				6E460058112329460046BF27 /* TTNetworkReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

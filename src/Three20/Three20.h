@@ -129,6 +129,8 @@
 // Network
 #import "Three20/TTGlobalNetwork.h"
 
+#import "Three20/TTNetworkReachability.h"
+
 #import "Three20/TTModel.h"
 #import "Three20/TTNavigator.h"
 #import "Three20/TTURLMap.h"
