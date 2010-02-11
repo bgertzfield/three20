@@ -30,6 +30,10 @@
 		6E75E85911229CA500276F63 /* TTUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E85811229CA500276F63 /* TTUserInfo.h */; };
 		6E75E8DA1122AB7900276F63 /* TTRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E75E8D81122AB7900276F63 /* TTRequestLoader.m */; };
 		6E75E8DC1122AB9000276F63 /* TTRequestLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E75E8DB1122AB9000276F63 /* TTRequestLoader.h */; };
+		6E8F1E9D1124B00F0000543B /* TTEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F1E9B1124B00F0000543B /* TTEmailComposer.m */; };
+		6E8F1EAB1124B1AB0000543B /* TTEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F1EA91124B1AB0000543B /* TTEmail.m */; };
+		6E8F1EAE1124B31D0000543B /* TTEmail.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F1EAC1124B31D0000543B /* TTEmail.h */; };
+		6E8F1EAF1124B31D0000543B /* TTEmailComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F1EAD1124B31D0000543B /* TTEmailComposer.h */; };
 		6E8F7930111023EE00069B64 /* TTURLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F792E111023EE00069B64 /* TTURLAction.m */; };
 		6E8F79341110262700069B64 /* TTURLAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F79331110262700069B64 /* TTURLAction.h */; };
 		6E8F79EF1110FE3D00069B64 /* TTURLNavigatorPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F79ED1110FE3D00069B64 /* TTURLNavigatorPattern.m */; };
@@ -299,6 +303,10 @@
 		6E75E85811229CA500276F63 /* TTUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTUserInfo.h; path = Three20/TTUserInfo.h; sourceTree = "<group>"; };
 		6E75E8D81122AB7900276F63 /* TTRequestLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRequestLoader.m; sourceTree = "<group>"; };
 		6E75E8DB1122AB9000276F63 /* TTRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTRequestLoader.h; path = Three20/TTRequestLoader.h; sourceTree = "<group>"; };
+		6E8F1E9B1124B00F0000543B /* TTEmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTEmailComposer.m; sourceTree = "<group>"; };
+		6E8F1EA91124B1AB0000543B /* TTEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTEmail.m; sourceTree = "<group>"; };
+		6E8F1EAC1124B31D0000543B /* TTEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTEmail.h; path = Three20/TTEmail.h; sourceTree = "<group>"; };
+		6E8F1EAD1124B31D0000543B /* TTEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTEmailComposer.h; path = Three20/TTEmailComposer.h; sourceTree = "<group>"; };
 		6E8F792E111023EE00069B64 /* TTURLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLAction.m; sourceTree = "<group>"; };
 		6E8F79331110262700069B64 /* TTURLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTURLAction.h; path = Three20/TTURLAction.h; sourceTree = "<group>"; };
 		6E8F79ED1110FE3D00069B64 /* TTURLNavigatorPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLNavigatorPattern.m; sourceTree = "<group>"; };
@@ -691,6 +699,17 @@
 				6E75E8D81122AB7900276F63 /* TTRequestLoader.m */,
 			);
 			name = Private;
+			sourceTree = "<group>";
+		};
+		6E8F1E991124AFEE0000543B /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				6E8F1EAD1124B31D0000543B /* TTEmailComposer.h */,
+				6E8F1E9B1124B00F0000543B /* TTEmailComposer.m */,
+				6E8F1EAC1124B31D0000543B /* TTEmail.h */,
+				6E8F1EA91124B1AB0000543B /* TTEmail.m */,
+			);
+			name = Email;
 			sourceTree = "<group>";
 		};
 		6E8F79FC1110FECB00069B64 /* Patterns */ = {
@@ -1165,6 +1184,7 @@
 				BEF321B20F353B50000DE5D2 /* Photos */,
 				BEC787A51040A783005C00CF /* Springboard */,
 				EBC6183C10D850BB00D1997B /* Progress */,
+				6E8F1E991124AFEE0000543B /* Email */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1323,6 +1343,8 @@
 				EBDC847A10C44AD400257247 /* UILabelAdditions.h in Headers */,
 				EBC60EE110D5AAA400D1997B /* TTTableStyleSheet.h in Headers */,
 				6E46005A112329D70046BF27 /* TTNetworkReachability.h in Headers */,
+				6E8F1EAE1124B31D0000543B /* TTEmail.h in Headers */,
+				6E8F1EAF1124B31D0000543B /* TTEmailComposer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,6 +1550,8 @@
 				EBAE96A610D1F3C700F497CA /* UILabelAdditions.m in Sources */,
 				EBC60EDF10D5AA9300D1997B /* TTTableStyleSheet.m in Sources */,
 				6E460058112329460046BF27 /* TTNetworkReachability.m in Sources */,
+				6E8F1E9D1124B00F0000543B /* TTEmailComposer.m in Sources */,
+				6E8F1EAB1124B1AB0000543B /* TTEmail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

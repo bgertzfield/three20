@@ -126,6 +126,8 @@
 
 #import "Three20/TTRecursiveProgress.h"
 
+#import "Three20/TTEmailComposer.h"
+
 // Network
 #import "Three20/TTGlobalNetwork.h"
 
