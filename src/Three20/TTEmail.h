@@ -24,6 +24,7 @@
  *                            applyBody:@"This is my email"]
  */
 @interface TTEmail : NSObject {
+  NSString* _to;
   NSString* _title;
   NSString* _body;
   BOOL      _isHTML;
@@ -31,9 +32,17 @@
 
 + (TTEmail*) email;
 
+- (TTEmail*) applyTo:(NSString*)to;
 - (TTEmail*) applyTitle:(NSString*)title;
 - (TTEmail*) applyBody:(NSString*)body;
 - (TTEmail*) applyIsHTML:(BOOL)isHTML;
+
+/**
+ * The receiver of this email.
+ *
+ * @default nil
+ */
+@property (nonatomic, copy)   NSString* to;
 
 /**
  * The subject line of the email.
