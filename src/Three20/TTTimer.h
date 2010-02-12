@@ -37,6 +37,11 @@
  */
 - (float) elapsedTimeWithName:(NSString*)name;
 
+/**
+ * Get the elapsed number of seconds for the given timer and reset the timer.
+ */
+- (float) stopwatchTimeWithName:(NSString*)name;
+
 @end
 
 

@@ -50,6 +50,16 @@ static mach_timebase_info_data_t timebase;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (float) machToSeconds:(uint64_t)elapsed {
+  return
+    ((float)elapsed)
+    * ((float)timebase.numer)
+    / ((float)timebase.denom)
+    / 1000000000.0f;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) startWithName:(NSString*)name {
   uint64_t startTime = mach_absolute_time();
   [_timers setObject:[NSNumber numberWithUnsignedLongLong:startTime] forKey:name];
@@ -61,11 +71,19 @@ static mach_timebase_info_data_t timebase;
   uint64_t startTime = [[_timers objectForKey:name] unsignedLongLongValue];
   uint64_t elapsed = mach_absolute_time() - startTime;
 
-  return
-    ((float)elapsed)
-    * ((float)timebase.numer)
-    / ((float)timebase.denom)
-    / 1000000000.0f;
+  return [self machToSeconds:elapsed];
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (float) stopwatchTimeWithName:(NSString*)name {
+  uint64_t startTime = [[_timers objectForKey:name] unsignedLongLongValue];
+  uint64_t endTime = mach_absolute_time();
+  uint64_t elapsed = endTime - startTime;
+  
+  [_timers setObject:[NSNumber numberWithUnsignedLongLong:endTime] forKey:name];
+  
+  return [self machToSeconds:elapsed];
 }
 
 
