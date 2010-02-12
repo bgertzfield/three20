@@ -58,7 +58,9 @@
   MFMailComposeViewController* composer = [[MFMailComposeViewController alloc] init];
   composer.mailComposeDelegate = (id<MFMailComposeViewControllerDelegate>)[TTEmailComposer class];
 
-  [composer setToRecipients:[NSArray arrayWithObject:email.to]];
+  if (nil != email.to) {
+    [composer setToRecipients:[NSArray arrayWithObject:email.to]];
+  }
   [composer setSubject:email.title];
   [composer setMessageBody:email.body isHTML:email.isHTML];
   
