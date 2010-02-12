@@ -34,6 +34,8 @@
 		6E8F1EAB1124B1AB0000543B /* TTEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F1EA91124B1AB0000543B /* TTEmail.m */; };
 		6E8F1EAE1124B31D0000543B /* TTEmail.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F1EAC1124B31D0000543B /* TTEmail.h */; };
 		6E8F1EAF1124B31D0000543B /* TTEmailComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F1EAD1124B31D0000543B /* TTEmailComposer.h */; };
+		6E8F207B1124DBAF0000543B /* TTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F20791124DBAF0000543B /* TTTimer.m */; };
+		6E8F207D1124DBC70000543B /* TTTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F207C1124DBC70000543B /* TTTimer.h */; };
 		6E8F7930111023EE00069B64 /* TTURLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F792E111023EE00069B64 /* TTURLAction.m */; };
 		6E8F79341110262700069B64 /* TTURLAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8F79331110262700069B64 /* TTURLAction.h */; };
 		6E8F79EF1110FE3D00069B64 /* TTURLNavigatorPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F79ED1110FE3D00069B64 /* TTURLNavigatorPattern.m */; };
@@ -307,6 +309,8 @@
 		6E8F1EA91124B1AB0000543B /* TTEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTEmail.m; sourceTree = "<group>"; };
 		6E8F1EAC1124B31D0000543B /* TTEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTEmail.h; path = Three20/TTEmail.h; sourceTree = "<group>"; };
 		6E8F1EAD1124B31D0000543B /* TTEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTEmailComposer.h; path = Three20/TTEmailComposer.h; sourceTree = "<group>"; };
+		6E8F20791124DBAF0000543B /* TTTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTimer.m; sourceTree = "<group>"; };
+		6E8F207C1124DBC70000543B /* TTTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTimer.h; path = Three20/TTTimer.h; sourceTree = "<group>"; };
 		6E8F792E111023EE00069B64 /* TTURLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLAction.m; sourceTree = "<group>"; };
 		6E8F79331110262700069B64 /* TTURLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTURLAction.h; path = Three20/TTURLAction.h; sourceTree = "<group>"; };
 		6E8F79ED1110FE3D00069B64 /* TTURLNavigatorPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLNavigatorPattern.m; sourceTree = "<group>"; };
@@ -618,6 +622,7 @@
 		6E14D8EA10E0B5F100445222 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6E8F20771124DBA50000543B /* Timer */,
 				6E14D92E10E0B6C000445222 /* XML */,
 			);
 			name = Core;
@@ -710,6 +715,15 @@
 				6E8F1EA91124B1AB0000543B /* TTEmail.m */,
 			);
 			name = Email;
+			sourceTree = "<group>";
+		};
+		6E8F20771124DBA50000543B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				6E8F207C1124DBC70000543B /* TTTimer.h */,
+				6E8F20791124DBAF0000543B /* TTTimer.m */,
+			);
+			name = Timer;
 			sourceTree = "<group>";
 		};
 		6E8F79FC1110FECB00069B64 /* Patterns */ = {
@@ -1345,6 +1359,7 @@
 				6E46005A112329D70046BF27 /* TTNetworkReachability.h in Headers */,
 				6E8F1EAE1124B31D0000543B /* TTEmail.h in Headers */,
 				6E8F1EAF1124B31D0000543B /* TTEmailComposer.h in Headers */,
+				6E8F207D1124DBC70000543B /* TTTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1552,6 +1567,7 @@
 				6E460058112329460046BF27 /* TTNetworkReachability.m in Sources */,
 				6E8F1E9D1124B00F0000543B /* TTEmailComposer.m in Sources */,
 				6E8F1EAB1124B1AB0000543B /* TTEmail.m in Sources */,
+				6E8F207B1124DBAF0000543B /* TTTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

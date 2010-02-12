@@ -59,6 +59,8 @@
 #import "Three20/TTGlobalCoreLocale.h"
 #import "Three20/TTGlobalCorePaths.h"
 
+#import "Three20/TTTimer.h"
+
 #import "Three20/TTXMLParser.h"
 
 // UI
