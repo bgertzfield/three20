@@ -58,6 +58,10 @@ NSString* TTDescriptionForError(NSError* error) {
     } else {
       return TTLocalizedString(@"Connection Error", @"");
     }
+  } else if ([error.domain isEqualToString:NSPOSIXErrorDomain]) {
+    if (error.code == 22) {
+      return TTLocalizedString(@"No Internet Connection", @"");
+    }
   }
   return TTLocalizedString(@"Error", @"");
 }
