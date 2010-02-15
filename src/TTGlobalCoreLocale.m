@@ -54,13 +54,13 @@ NSString* TTDescriptionForError(NSError* error) {
     if (error.code == NSURLErrorTimedOut) {
       return TTLocalizedString(@"Connection Timed Out", @"");
     } else if (error.code == NSURLErrorNotConnectedToInternet) {
-      return TTLocalizedString(@"No Internet Connection", @"");
+      return TTLocalizedString(@"Sorry, you must be connected to Wifi or your data network to view this page.", @"");
     } else {
       return TTLocalizedString(@"Connection Error", @"");
     }
   } else if ([error.domain isEqualToString:NSPOSIXErrorDomain]) {
     if (error.code == 22) {
-      return TTLocalizedString(@"No Internet Connection", @"");
+      return TTLocalizedString(@"Sorry, you must be connected to Wifi or your data network to view this page.", @"");
     }
   }
   return TTLocalizedString(@"Error", @"");
