@@ -20,6 +20,9 @@
 #import "Three20/TTURLNavigatorPattern.h"
 #import "Three20/TTURLGeneratorPattern.h"
 
+// UI (Private)
+#import "Three20/UIViewControllerAdditionsInternal.h"
+
 // Core
 #import "Three20/TTGlobalCore.h"
 #import "Three20/TTCorePreprocessorMacros.h"
@@ -346,6 +349,10 @@
   }
   // XXXjoe Normalize the URL first
   [_objectMappings setObject:object forKey:URL];
+
+  if ([object isKindOfClass:[UIViewController class]]) {
+    [UIViewController addGlobalController:object];
+  }
 }
 
 

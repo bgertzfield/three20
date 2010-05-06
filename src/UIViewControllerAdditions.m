@@ -19,11 +19,16 @@
 // UI
 #import "Three20/TTGlobalUI.h"
 #import "Three20/TTNavigator.h"
+#import "Three20/TTViewController.h"
+
+// UI (private)
+#import "Three20/UIViewControllerAdditionsInternal.h"
 
 // Network
 #import "Three20/TTURLMap.h"
 
 // Core
+#import "Three20/TTCorePreprocessorMacros.h"
 #import "Three20/TTGlobalCore.h"
 #import "Three20/TTDebug.h"
 #import "Three20/TTDebugFlags.h"
@@ -31,6 +36,12 @@
 static NSMutableDictionary* gNavigatorURLs = nil;
 static NSMutableDictionary* gSuperControllers = nil;
 static NSMutableDictionary* gPopupViewControllers = nil;
+
+// Garbage collection state
+static NSMutableSet*        gsCommonControllers     = nil;
+static NSTimer*             gsGarbageCollectorTimer = nil;
+
+static const NSTimeInterval kGarbageCollectionInterval = 20;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,21 +104,68 @@ static NSMutableDictionary* gPopupViewControllers = nil;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Garbage Collection
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
++ (NSMutableSet*)commonControllers {
+  if (nil == gsCommonControllers) {
+    gsCommonControllers = [[NSMutableSet alloc] init];
+  }
+  return gsCommonControllers;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Swapped with dealloc by TTURLMap (only if you're using TTURLMap)
+ * Three20 used to provide an overridden dealloc method that all UIViewControllers
+ * implementations would use to remove their originalNavigatorURLs and other properties.
+ * Apple has stated that using TTSwapMethod to swap dealloc with a custom implementation isn't
+ * ok, so now we do garbage collection.
+ *
+ * The basic idea.
+ * Whenever you set the original navigator URL path for a controller, we add the controller
+ * to a global navigator controllers list. We then run the following garbage collection every
+ * kGarbageCollectionInterval seconds. If any controllers have a retain count of 1, then
+ * we can safely say that nobody is using it anymore and release it.
  */
-- (void)ttdealloc {
-  NSString* URL = self.originalNavigatorURL;
-  if (URL) {
-    [[TTNavigator navigator].URLMap removeObjectForURL:URL];
-    self.originalNavigatorURL = nil;
++ (void)doGarbageCollection {
+  NSMutableSet* controllers = [UIViewController commonControllers];
+
+  if ([controllers count] > 0) {
+    TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                    @"Checking %d controllers for garbage.", [controllers count]);
+
+    NSSet* fullControllerList = [controllers copy];
+    for (UIViewController* controller in fullControllerList) {
+
+      // Subtract one from the retain count here due to the copied set.
+      NSInteger retainCount = [controller retainCount] - 1;
+
+      TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                      @"Retain count for %X is %d", controller, retainCount);
+
+      if (retainCount == 1) {
+        [controller unsetProperties];
+
+        // The object's retain count is now 1, so when we release the copied set below,
+        // the object will be completely released.
+        [controllers removeObject:controller];
+      }
+    }
+
+    TT_RELEASE_SAFELY(fullControllerList);
   }
 
-  self.superController = nil;
-  self.popupViewController = nil;
-
-  // Calls the original dealloc, swizzled away
-  [self ttdealloc];
+  if ([controllers count] == 0) {
+    TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                    @"Killing the common garbage collector.");
+    [gsGarbageCollectorTimer invalidate];
+    TT_RELEASE_SAFELY(gsGarbageCollectorTimer);
+    TT_RELEASE_SAFELY(gsCommonControllers);
+  }
 }
 
 
@@ -138,6 +196,9 @@ static NSMutableDictionary* gPopupViewControllers = nil;
       gNavigatorURLs = [[NSMutableDictionary alloc] init];
     }
     [gNavigatorURLs setObject:URL forKey:key];
+
+    [UIViewController addGlobalController:self];
+
   } else {
     [gNavigatorURLs removeObjectForKey:key];
   }
@@ -172,6 +233,8 @@ static NSMutableDictionary* gPopupViewControllers = nil;
   }
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setSuperController:(UIViewController*)viewController {
   NSString* key = [NSString stringWithFormat:@"%d", self.hash];
   if (viewController) {
@@ -179,6 +242,9 @@ static NSMutableDictionary* gPopupViewControllers = nil;
       gSuperControllers = TTCreateNonRetainingDictionary();
     }
     [gSuperControllers setObject:viewController forKey:key];
+
+    [UIViewController addGlobalController:self];
+
   } else {
     [gSuperControllers removeObjectForKey:key];
   }
@@ -233,6 +299,9 @@ static NSMutableDictionary* gPopupViewControllers = nil;
       gPopupViewControllers = TTCreateNonRetainingDictionary();
     }
     [gPopupViewControllers setObject:viewController forKey:key];
+
+    [UIViewController addGlobalController:self];
+
   } else {
     [gPopupViewControllers removeObjectForKey:key];
   }
@@ -327,5 +396,58 @@ static NSMutableDictionary* gPopupViewControllers = nil;
   return YES;
 }
 
+
+@end
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+@implementation UIViewController (TTCategoryInternal)
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
++ (void)addGlobalController:(UIViewController*)controller {
+  // TTViewController calls unsetProperties in its dealloc.
+  if (![controller isKindOfClass:[TTViewController class]]) {
+    [[UIViewController commonControllers] addObject:controller];
+
+    TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                    @"Adding a global controller.");
+
+    if (nil == gsGarbageCollectorTimer) {
+      gsGarbageCollectorTimer =
+      [[NSTimer scheduledTimerWithTimeInterval: kGarbageCollectionInterval
+                                        target: [UIViewController class]
+                                      selector: @selector(doGarbageCollection)
+                                      userInfo: nil
+                                       repeats: YES] retain];
+    }
+#if TTDFLAG_CONTROLLERGARBAGECOLLECTION
+  } else {
+    TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                    @"Not adding a global controller.");
+#endif
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)unsetProperties {
+  TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                  @"Unsetting this controller's properties: %X", self);
+
+  NSString* urlPath = self.originalNavigatorURL;
+  if (nil != urlPath) {
+    TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
+                    @"Removing this URL path: %@", urlPath);
+
+    [[TTNavigator navigator].URLMap removeObjectForURL:urlPath];
+    self.originalNavigatorURL = nil;
+  }
+
+  self.superController = nil;
+  self.popupViewController = nil;
+}
 
 @end

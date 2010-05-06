@@ -22,6 +22,9 @@
 #import "Three20/TTNavigator.h"
 #import "Three20/UIViewControllerAdditions.h"
 
+// UI (private)
+#import "Three20/UIViewControllerAdditionsInternal.h"
+
 // - Controllers
 #import "Three20/TTTableViewController.h"
 #import "Three20/TTSearchDisplayController.h"
@@ -68,6 +71,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TTDCONDITIONLOG(TTDFLAG_VIEWCONTROLLERS, @"DEALLOC %@", self);
+
+  [self unsetProperties];
 
   [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
 

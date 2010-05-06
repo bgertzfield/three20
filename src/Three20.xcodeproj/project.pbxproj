@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E12C0E01192514100C7113B /* UIViewControllerAdditionsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E12C0DF1192514100C7113B /* UIViewControllerAdditionsInternal.h */; };
 		6E14D7E810E09A2300445222 /* TTURLDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E14D7E610E09A2300445222 /* TTURLDataResponse.m */; };
 		6E14D81410E0A12700445222 /* TTURLImageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E14D81210E0A12700445222 /* TTURLImageResponse.m */; };
 		6E14D82A10E0A16700445222 /* TTURLImageResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E14D82810E0A16700445222 /* TTURLImageResponse.h */; };
@@ -533,6 +534,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6E12C0DF1192514100C7113B /* UIViewControllerAdditionsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewControllerAdditionsInternal.h; path = Three20/UIViewControllerAdditionsInternal.h; sourceTree = "<group>"; };
 		6E14D7E610E09A2300445222 /* TTURLDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLDataResponse.m; sourceTree = "<group>"; };
 		6E14D81210E0A12700445222 /* TTURLImageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLImageResponse.m; sourceTree = "<group>"; };
 		6E14D82810E0A16700445222 /* TTURLImageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTURLImageResponse.h; path = Three20/TTURLImageResponse.h; sourceTree = "<group>"; };
@@ -1086,6 +1088,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6E12C0E11192514700C7113B /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				6E12C0DF1192514100C7113B /* UIViewControllerAdditionsInternal.h */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 		6E14D7EC10E09A7F00445222 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
@@ -1341,6 +1351,7 @@
 				BEAF21200F4D329600D75F3B /* UIViewAdditions.m */,
 				BE8AA1920F428A4900FD8C43 /* UIViewControllerAdditions.h */,
 				BE8AA1900F428A3700FD8C43 /* UIViewControllerAdditions.m */,
+				6E12C0E11192514700C7113B /* Private */,
 				BE7DD3A91001EDFF00662212 /* UINavigationControllerAdditions.h */,
 				BE7DD3A51001EDE000662212 /* UINavigationControllerAdditions.m */,
 				BE7DD3AA1001EDFF00662212 /* UITabBarControllerAdditions.h */,
@@ -2332,6 +2343,7 @@
 				6E5F22C311813D23004BEBA9 /* SBJsonParser.h in Headers */,
 				6E5F22C511813D23004BEBA9 /* SBJsonWriter.h in Headers */,
 				6E5F22D311814CF2004BEBA9 /* TTURLJSONResponse.h in Headers */,
+				6E12C0E01192514100C7113B /* UIViewControllerAdditionsInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

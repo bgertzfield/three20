@@ -85,10 +85,6 @@ UIViewController* TTOpenURL(NSString* URL) {
     _URLMap = [[TTURLMap alloc] init];
     _persistenceMode = TTNavigatorPersistenceModeNone;
 
-    // SwapMethods a new dealloc for UIViewController so it notifies us when it's going away.
-    // We need to remove dying controllers from our binding cache.
-    TTSwapMethods([UIViewController class], @selector(dealloc), @selector(ttdealloc));
-
     TTSwapMethods([UINavigationController class], @selector(popViewControllerAnimated:),
                   @selector(popViewControllerAnimated2:));
 
